@@ -3,6 +3,7 @@
 설치
 
 * pip install -r requirements.txt
+* python -m http.server 80
 * python app_start.py
 
 기능

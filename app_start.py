@@ -33,7 +33,7 @@ def index():
     random.shuffle(file_list)
 
 
-    return render_template('main.html', value=data_list, imagelink=request.host_url + 'image/' + file_list[0], imagelink1=request.host_url + 'image/' + file_list[1], imagelink2=request.host_url + 'image/' + file_list[2], imagelink3=request.host_url + 'image/' + file_list[3], imagelink4=request.host_url + 'image/' + file_list[4])
+    return render_template('main.html', value=data_list, imagelink="http://localhost/" + 'image/' + file_list[0], imagelink1="http://localhost/" + 'image/' + file_list[1], imagelink2="http://localhost/" + 'image/' + file_list[2], imagelink3="http://localhost/" + 'image/' + file_list[3], imagelink4="http://localhost/" + 'image/' + file_list[4])
 
 
 @app.route('/admin')
@@ -53,7 +53,7 @@ def indexadmin():
     random.shuffle(file_list)
 
 
-    return render_template('admin.html', value=data_list, imagelink=request.host_url + 'image/' + file_list[0], imagelink1=request.host_url + 'image/' + file_list[1], imagelink2=request.host_url + 'image/' + file_list[2], imagelink3=request.host_url + 'image/' + file_list[3], imagelink4=request.host_url + 'image/' + file_list[4])
+    return render_template('admin.html', value=data_list, imagelink="http://localhost/" + 'image/' + file_list[0], imagelink1="http://localhost/" + 'image/' + file_list[1], imagelink2="http://localhost/" + 'image/' + file_list[2], imagelink3="http://localhost/" + 'image/' + file_list[3], imagelink4="http://localhost/" + 'image/' + file_list[4])
 
 
 @app.route('/write')
@@ -120,11 +120,11 @@ def board_content(articleID):
 
 @app.errorhandler(404)
 def page_not_found(error):
-     return redirect(request.host_url)
+     return redirect("http://localhost/")
 
 @app.route('/main.html')
 def gomain():
-    return redirect(request.host_url)
+    return redirect("http://localhost/")
 
 @app.route('/delete/<id>')
 def delete(id):
@@ -133,9 +133,9 @@ def delete(id):
     cur.execute(sql)
 
     db.commit()
-    return redirect(request.host_url)
+    return redirect("http://localhost/")
 
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
-    app.run(host='0.0.0.0', port=port)
+    app.run(host='0.0.0.0', port=port, debug=True)
