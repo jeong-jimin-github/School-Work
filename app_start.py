@@ -120,11 +120,11 @@ def board_content(articleID):
 
 @app.errorhandler(404)
 def page_not_found(error):
-     return redirect("http://localhost/")
+     return redirect("http://localhost:5000")
 
 @app.route('/main.html')
 def gomain():
-    return redirect("http://localhost/")
+    return redirect("http://localhost:5000")
 
 @app.route('/delete/<id>')
 def delete(id):
@@ -133,7 +133,7 @@ def delete(id):
     cur.execute(sql)
 
     db.commit()
-    return redirect("http://localhost/")
+    return redirect("http://localhost:5000")
 
 
 if __name__ == '__main__':
